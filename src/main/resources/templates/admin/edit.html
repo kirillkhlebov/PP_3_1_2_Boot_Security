@@ -35,6 +35,7 @@
         <tr>
             <td><label for="email">Email:</label></td>
             <td><input type="text" id="email" name="email" th:value="${user.email}" required></td>
+            <div th:if="${error}" class="error-message" style="color: red;">[[${error}]]</div>
         </tr>
         <tr>
             <td><label for="password">Password:</label></td>

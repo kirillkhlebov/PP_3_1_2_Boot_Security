@@ -1,19 +1,18 @@
-package ru.kata.SpirngSecurityApp.config;
+package ru.kata.SpirngSecurityApp.configs;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import ru.kata.SpirngSecurityApp.models.Role;
-import ru.kata.SpirngSecurityApp.repo.RoleRepository;
+import ru.kata.SpirngSecurityApp.services.RoleService;
 
-import java.util.Optional;
 
 @Component
 public class RoleInitializer implements CommandLineRunner {
 
-    private final RoleRepository roleRepository;
+    private final RoleService roleService;
 
-    public RoleInitializer(RoleRepository roleRepository) {
-        this.roleRepository = roleRepository;
+    public RoleInitializer(RoleService roleService) {
+        this.roleService = roleService;
     }
 
     @Override
@@ -23,10 +22,9 @@ public class RoleInitializer implements CommandLineRunner {
     }
 
     private void createRoleIfNotExists(String name) {
-        Optional<Role> role = roleRepository.findByName(name);
-        if (role.isEmpty()) {
+        if (!roleService.isExist(name)) {
             Role saveRole = new Role(name);
-            roleRepository.save(saveRole);
+            roleService.save(saveRole);
         }
     }
 }
