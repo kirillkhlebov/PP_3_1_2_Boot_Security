@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.kata.SpirngSecurityApp.models.User;
-import ru.kata.SpirngSecurityApp.services.RoleService;
-import ru.kata.SpirngSecurityApp.services.UserService;
+import ru.kata.SpirngSecurityApp.services.RoleServiceInt;
+import ru.kata.SpirngSecurityApp.services.UserServiceInt;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,13 +19,13 @@ import java.util.Optional;
 @RequestMapping("/admin")
 public class AdminController {
 
-    private final UserService userService;
-    private final RoleService roleService;
+    private final UserServiceInt userService;
+    private final RoleServiceInt roleService;
 
     @Autowired
-    public AdminController(UserService userRepository, RoleService roleRepository) {
-        this.userService = userRepository;
-        this.roleService = roleRepository;
+    public AdminController(UserServiceInt userService, RoleServiceInt roleService) {
+        this.userService = userService;
+        this.roleService = roleService;
     }
 
     @GetMapping("/admin")

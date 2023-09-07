@@ -3,15 +3,15 @@ package ru.kata.SpirngSecurityApp.configs;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import ru.kata.SpirngSecurityApp.models.Role;
-import ru.kata.SpirngSecurityApp.services.RoleService;
+import ru.kata.SpirngSecurityApp.services.RoleServiceInt;
 
 
 @Component
 public class RoleInitializer implements CommandLineRunner {
 
-    private final RoleService roleService;
+    private final RoleServiceInt roleService;
 
-    public RoleInitializer(RoleService roleService) {
+    public RoleInitializer(RoleServiceInt roleService) {
         this.roleService = roleService;
     }
 
